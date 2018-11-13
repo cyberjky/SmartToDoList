@@ -3,24 +3,15 @@ import {Image, Text, View, StyleSheet} from 'react-native';
 import {ActionConst, Actions, Lightbox, Reducer, Router, Scene} from 'react-native-router-flux';
 
 
-const splashText = 'SmartToDoList';
-
-export default class Splash extends Component {
-
-
-
-    goHome = () => {
-        Actions.home()
-    };
+export default class Home extends Component {
 
     render() {
         return (
             <View style={styles.page}>
-                <Text style={styles.logo}> Splash </Text>
+                <Text style={styles.logo}> HOME </Text>
                 <Text style={styles.text}
-                    //style={{width: 60, alignItems: 'center', justifyContent: 'center'}}
-                    onPress={() => this.goHome()}
-                > START </Text>
+                      onPress={() => Actions.pop()}
+                > GO Back </Text>
             </View>
         );
     }

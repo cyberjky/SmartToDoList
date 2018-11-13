@@ -10,7 +10,7 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import {ActionConst, Actions, Lightbox, Reducer, Router, Scene} from 'react-native-router-flux';
 import Splash from './app/scenes/Splash';
-
+import Home from './app/scenes/Home';
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
@@ -28,6 +28,7 @@ export default class App extends Component<Props> {
         >
             <Scene key="root" hideNavBar>
                 <Scene key="Splash" component={Splash}/>
+                <Scene key="home" component={Home}/>
             </Scene>
         </Router>
     );

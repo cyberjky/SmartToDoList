@@ -7,25 +7,33 @@ const splashText = 'SmartToDoList';
 
 export default class Splash extends Component {
 
+    componentWillMount() {
 
+        setTimeout(() => {
+            Actions.home();
+        }, 2500);
 
-    goHome = () => {
-        Actions.home()
-    };
+    }
+
 
     render() {
-        return (
-            <View style={styles.page}>
-                <Text style={styles.logo}> Splash </Text>
-                <Text style={styles.text}
-                    //style={{width: 60, alignItems: 'center', justifyContent: 'center'}}
-                    onPress={() => this.goHome()}
-                > START </Text>
-            </View>
-        );
+            return (
+                <View style={styles.page}>
+                    <Text style={styles.logo}> SmartToDolist </Text>
+                    <Text style={{
+                        flex: 0.8,
+                        fontSize: 20,
+
+                    }}
+
+                    > Just Do </Text>
+                    <Text style={styles.text}> Copyright 2018 JJols </Text>
+                </View>
+            );
+
+
     }
 }
-
 
 let styles = StyleSheet.create({
     page: {
@@ -35,11 +43,11 @@ let styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     text: {
-        flex: 0.9,
-        fontSize: 20,
+        fontSize: 16,
+        alignItems: 'center',
     },
     logo: {
-        fontSize: 30,
-        marginTop: 250,
+        fontSize: 50,
+        marginTop: 200,
     },
 });

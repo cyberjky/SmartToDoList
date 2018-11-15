@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Image, Text, View, StyleSheet} from 'react-native';
+import {Image, Text, View, StyleSheet, ScrollView} from 'react-native';
 import {ActionConst, Actions, Lightbox, Reducer, Router, Scene} from 'react-native-router-flux';
 
 
@@ -7,12 +7,27 @@ export default class Home extends Component {
 
     render() {
         return (
+
             <View style={styles.page}>
-                <Text style={styles.logo}> HOME </Text>
-                <Text style={styles.text}
-                      onPress={() => Actions.pop()}
-                > GO Back </Text>
+                <View style={styles.toplayer}>
+                    <Text style={styles.logo}> logo </Text>
+                </View>
+
+                <ScrollView style={styles.mainlayer}>
+                    {/*<Text style={styles.logo}> main </Text>*/}
+
+                    <Text style={styles.text}> 할일1 </Text>
+                    <Text style={styles.text}> 할일2 </Text>
+                    <Text style={styles.text}> 할일3 </Text>
+
+                </ScrollView>
+
+                <View style={styles.bottomlayer}>
+                    <Text style={styles.logo}> bottom </Text>
+                </View>
+
             </View>
+
         );
     }
 }
@@ -20,17 +35,34 @@ export default class Home extends Component {
 
 let styles = StyleSheet.create({
     page: {
+        marginTop: 30,
         flex: 1,
         backgroundColor: '#a2d8e2',
+    },
+    toplayer: {
+        flex: 0.08,
+        borderColor: '#AAAAAA',
+        borderWidth: 1,
+        //height: 50,
+        justifyContent: 'center',
         alignItems: 'center',
-        justifyContent: 'space-between',
+    },
+    mainlayer: {
+        flex: 0.84,
+    },
+
+    bottomlayer: {
+        flex: 0.08,
+        borderColor: '#AAAAAA',
+        borderWidth: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     text: {
-        flex: 0.9,
         fontSize: 20,
     },
     logo: {
-        fontSize: 30,
-        marginTop: 250,
+        fontSize: 20,
+        flexDirection: 'row',
     },
 });

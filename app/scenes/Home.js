@@ -1,11 +1,27 @@
 import React, {Component} from 'react';
-import {Image, Text, View, StyleSheet, ScrollView} from 'react-native';
+import {Image, Text, View, StyleSheet, ScrollView, FlatList} from 'react-native';
 import {ActionConst, Actions, Lightbox, Reducer, Router, Scene} from 'react-native-router-flux';
+import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 
+
+//let data = [];
 
 export default class Home extends Component {
 
+    constructor() {
+      super();
+
+        this.state = {
+          data: [{key: 'a'}, {key: 'b'}],
+        };
+    };
+
+
+
+
+
     render() {
+
         return (
 
             <View style={styles.page}>
@@ -13,18 +29,40 @@ export default class Home extends Component {
                     <Text style={styles.logo}> logo </Text>
                 </View>
 
-                <ScrollView style={styles.mainlayer}>
-                    {/*<Text style={styles.logo}> main </Text>*/}
 
-                    <Text style={styles.text}> 할일1 </Text>
-                    <Text style={styles.text}> 할일2 </Text>
-                    <Text style={styles.text}> 할일3 </Text>
+                <ScrollableTabView
+                    style={{marginTop: 20, }}
+                    initialPage={1}
+                    renderTabBar={() => <DefaultTabBar />}
+                    tabBarPosition={"bottom"}
+                >
 
-                </ScrollView>
 
-                <View style={styles.bottomlayer}>
-                    <Text style={styles.logo}> bottom </Text>
-                </View>
+
+                    <Text tabLabel='Menu'>My</Text>
+
+                    <ScrollView tabLabel='Main' style={styles.mainlayer}>
+                        {/*<Text style={styles.logo}> main </Text>*/}
+                        <FlatList
+                            data={this.state.data}
+                            renderItem={({item}) =>
+                                <Text style={styles.text}
+                                >
+                                    {item.key}
+                                    </Text>}
+                        />
+                    </ScrollView>
+
+                    {/*<Text tabLabel='Tab #2'>favorite</Text>*/}
+                    <Text tabLabel='setting'>project</Text>
+                </ScrollableTabView>
+
+
+
+
+                {/*<View style={styles.bottomlayer}>*/}
+                    {/*<Text style={styles.logo}> bottom </Text>*/}
+                {/*</View>*/}
 
             </View>
 

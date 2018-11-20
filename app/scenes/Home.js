@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import {Image, Text, View, StyleSheet, ScrollView, FlatList} from 'react-native';
+import {Image, Text, View, StyleSheet, ScrollView, FlatList, TouchableHighlight, } from 'react-native';
 import {ActionConst, Actions, Lightbox, Reducer, Router, Scene} from 'react-native-router-flux';
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
-
-
+import CheckBox from 'react-native-check-box'
 //let data = [];
 
 export default class Home extends Component {
@@ -12,16 +11,36 @@ export default class Home extends Component {
       super();
 
         this.state = {
-          data: [{key: 'a'}, {key: 'b'}],
+            checked: [],
+          data: [
+              {
+                  key: 'hello',
+              },
+              {
+                  key: 'Welcome',
+              },
+
+          ]
         };
+
     };
 
 
+    componentWillMount() {
+      let { data, checked } = this.state;
+      let intialCheck = data.map(x => false);
+      this.setState({ checked: intialCheck })
+    }
 
 
+    handleChange = (index) => {
+      let checked = [...this.state.checked];
+      checked[index] = !checked[index];
+      this.setState({ checked });
+    }
 
     render() {
-
+      let { data, checked } = this.state;
         return (
 
             <View style={styles.page}>
@@ -31,7 +50,6 @@ export default class Home extends Component {
 
 
                 <ScrollableTabView
-                    style={{marginTop: 20, }}
                     initialPage={1}
                     renderTabBar={() => <DefaultTabBar />}
                     tabBarPosition={"bottom"}
@@ -41,16 +59,38 @@ export default class Home extends Component {
 
                     <Text tabLabel='Menu'>My</Text>
 
+
                     <ScrollView tabLabel='Main' style={styles.mainlayer}>
                         {/*<Text style={styles.logo}> main </Text>*/}
+
                         <FlatList
-                            data={this.state.data}
-                            renderItem={({item}) =>
-                                <Text style={styles.text}
-                                >
-                                    {item.key}
-                                    </Text>}
+                            data={data}
+                            renderItem={({ item, index }) => (
+                              <CheckBox
+                                  style={{flex: 1, padding: 10}}
+                                  onClick={()=>{
+                                    this.setState({
+                                        isChecked:!this.state.isChecked
+                                    })
+                                  }}
+                                  isChecked={this.state.isChecked}
+                                  rightText={item.key}
+                              />
+                                )}
+
+                                // <TouchableHighlight
+                                // onPress={() => this._onPress(item)}
+                                // onShowUnderlay={item.highlight}
+                                // onHideUnderlay={item.unhighlight}>
+                                // <View style={{backgroundColor: 'white'}}>
+                                // <Text style={styles.text}>{item.key}</Text>
+                                // </View>
+                                // </TouchableHighlight>
+                                // )}
                         />
+
+
+
                     </ScrollView>
 
                     {/*<Text tabLabel='Tab #2'>favorite</Text>*/}
@@ -97,7 +137,11 @@ let styles = StyleSheet.create({
         alignItems: 'center',
     },
     text: {
-        fontSize: 20,
+        marginTop: 10,
+        marginBottom: 10,
+        marginLeft: 10,
+        fontSize: 25,
+
     },
     logo: {
         fontSize: 20,

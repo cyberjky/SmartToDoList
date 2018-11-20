@@ -20,8 +20,8 @@ export default class App extends Component {
             hideNavBar
         >
             <Scene key="root" hideNavBar>
-                <Scene key="Splash" component={Splash} initial/>
-                <Scene key="home" component={Home} type={ActionConst.REPLACE} />
+                <Scene key="Splash" component={Splash} />
+                <Scene key="home" component={Home} type={ActionConst.REPLACE} initial/>
             </Scene>
         </Router>
     );

@@ -2,45 +2,65 @@ import React, {Component} from 'react';
 import {Image, Text, View, StyleSheet, ScrollView, FlatList, TouchableHighlight, } from 'react-native';
 import {ActionConst, Actions, Lightbox, Reducer, Router, Scene} from 'react-native-router-flux';
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
-import CheckBox from 'react-native-check-box'
-//let data = [];
+import CheckBox from 'react-native-check-box';
 
-export default class Home extends Component {
+
+
+
+type Todoitem = {
+  checked : Boolean,
+  contents : String,
+
+}
+
+var ITEMS: Todoitem[] = [
+    {
+    checked: true,
+        key: 'test',
+    },
+    {
+        checked: false,
+        key: 'test2',
+    }
+]
+
+export default class Home extends Component{
 
     constructor() {
       super();
 
         this.state = {
-            checked: [],
-          data: [
-              {
-                  key: 'hello',
-              },
-              {
-                  key: 'Welcome',
-              },
+            data : ITEMS,
+            refresh : false,
 
-          ]
         };
 
     };
 
 
-    componentWillMount() {
-      let { data, checked } = this.state;
-      let intialCheck = data.map(x => false);
-      this.setState({ checked: intialCheck })
+    dataRefresh = (item, index) => {
+        item.checked = !item.checked
+        ITEMS[index] = item
+        this.setState({
+            data: ITEMS
+        })
+
     }
 
-
-    handleChange = (index) => {
-      let checked = [...this.state.checked];
-      checked[index] = !checked[index];
-      this.setState({ checked });
-    }
+    // // componentWillMount() {
+    // //   let { data, checked } = this.state;
+    // //   let intialCheck = data.map(x => false);
+    // //   this.setState({ checked: intialCheck })
+    // // }
+    //
+    //
+    // handleChange = (index) => {
+    //   let checked = [...this.state.checked];
+    //   checked[index] = !checked[index];
+    //   this.setState({ checked });
+    // }
 
     render() {
-      let { data, checked } = this.state;
         return (
 
             <View style={styles.page}>
@@ -64,16 +84,19 @@ export default class Home extends Component {
                         {/*<Text style={styles.logo}> main </Text>*/}
 
                         <FlatList
-                            data={data}
+                            data={this.state.data}
+                            extraData={this.state.refresh}
                             renderItem={({ item, index }) => (
                               <CheckBox
                                   style={{flex: 1, padding: 10}}
-                                  onClick={()=>{
-                                    this.setState({
-                                        isChecked:!this.state.isChecked
-                                    })
+                                  onClick={() => {
+                                      this.dataRefresh(item, index)
+                                      this.setState({
+                                          // data[index]: item
+                                          refresh: !this.state.refresh
+                                      })
                                   }}
-                                  isChecked={this.state.isChecked}
+                                  isChecked={item.checked}
                                   rightText={item.key}
                               />
                                 )}

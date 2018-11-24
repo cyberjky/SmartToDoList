@@ -65,7 +65,14 @@ export default class Home extends Component{
 
             <View style={styles.page}>
                 <View style={styles.toplayer}>
+                    <Text style={styles.logo}
+                          onPress={Actions.Additem}
+                    >
+                        Add
+                    </Text>
                     <Text style={styles.logo}> logo </Text>
+                    <Text style={styles.logo}> temp </Text>
+
                 </View>
 
 
@@ -81,7 +88,7 @@ export default class Home extends Component{
 
 
                     <ScrollView tabLabel='Main' style={styles.mainlayer}>
-                        {/*<Text style={styles.logo}> main </Text>*/}
+
 
                         <FlatList
                             data={this.state.data}
@@ -92,7 +99,6 @@ export default class Home extends Component{
                                   onClick={() => {
                                       this.dataRefresh(item, index)
                                       this.setState({
-                                          // data[index]: item
                                           refresh: !this.state.refresh
                                       })
                                   }}
@@ -101,31 +107,15 @@ export default class Home extends Component{
                               />
                                 )}
 
-                                // <TouchableHighlight
-                                // onPress={() => this._onPress(item)}
-                                // onShowUnderlay={item.highlight}
-                                // onHideUnderlay={item.unhighlight}>
-                                // <View style={{backgroundColor: 'white'}}>
-                                // <Text style={styles.text}>{item.key}</Text>
-                                // </View>
-                                // </TouchableHighlight>
-                                // )}
                         />
 
 
 
                     </ScrollView>
 
-                    {/*<Text tabLabel='Tab #2'>favorite</Text>*/}
-                    <Text tabLabel='setting'>project</Text>
+                     <Text tabLabel='setting'>project</Text>
                 </ScrollableTabView>
 
-
-
-
-                {/*<View style={styles.bottomlayer}>*/}
-                    {/*<Text style={styles.logo}> bottom </Text>*/}
-                {/*</View>*/}
 
             </View>
 
@@ -144,9 +134,9 @@ let styles = StyleSheet.create({
         flex: 0.08,
         borderColor: '#AAAAAA',
         borderWidth: 1,
-        //height: 50,
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
+        flexDirection: 'row',
     },
     mainlayer: {
         flex: 0.84,

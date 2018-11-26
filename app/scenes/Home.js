@@ -7,6 +7,7 @@ import CheckBox from 'react-native-check-box';
 
 
 
+
 type Todoitem = {
   checked : Boolean,
   contents : String,
@@ -24,11 +25,11 @@ var ITEMS: Todoitem[] = [
     }
 ]
 
+
 export default class Home extends Component{
 
     constructor() {
       super();
-
         this.state = {
             data : ITEMS,
             refresh : false,
@@ -36,6 +37,10 @@ export default class Home extends Component{
         };
 
     };
+
+    componentWillUnmount() {
+        Actions.pop();
+    }
 
 
     dataRefresh = (item, index) => {
@@ -47,18 +52,15 @@ export default class Home extends Component{
 
     }
 
-    // // componentWillMount() {
-    // //   let { data, checked } = this.state;
-    // //   let intialCheck = data.map(x => false);
-    // //   this.setState({ checked: intialCheck })
-    // // }
+
+    // addNewitem = () => {
+    //     ITEMS.push({checked: false, key: 'test3'})
+    //     this.setState({
+    //         refresh: !this.state.refresh
+    //     })
     //
-    //
-    // handleChange = (index) => {
-    //   let checked = [...this.state.checked];
-    //   checked[index] = !checked[index];
-    //   this.setState({ checked });
     // }
+
 
     render() {
         return (
@@ -67,9 +69,7 @@ export default class Home extends Component{
                 <View style={styles.toplayer}>
                     <Text style={styles.logo}
                           onPress={Actions.Additem}
-                    >
-                        Add
-                    </Text>
+                    >Adds</Text>
                     <Text style={styles.logo}> logo </Text>
                     <Text style={styles.logo}> temp </Text>
 

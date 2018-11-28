@@ -6,22 +6,21 @@ export default class Additem extends Component {
 
     constructor(props) {
         super(props);
-        console.log(props);
         this.state = {
             text: '',
         };
 
-
     }
 
-    getitem = (props) => {
-        // console.log(this.state.text);
+    getitem = () => {
+        //console.log(this.state.text);
+        //console.log(props);
         //props.addItem({text: this.state.text});
-        // props.addNewitem({text: this.state.text});
-        Actions.pop();
-        Actions.refresh({text: this.state.text});
-        //Actions.pop({text:this.state.text});
-        // home에 있는 함수호출
+        //Actions.refresh({text: this.state.text});
+
+        setTimeout(()=> {Actions.refresh({key:"Home", text: this.state.text})}, 500); Actions.pop();
+        //Actions.refresh({key:"Home", text: this.state.text});
+        //Actions.pop();
     }
 
 

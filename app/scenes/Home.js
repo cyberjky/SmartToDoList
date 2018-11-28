@@ -25,16 +25,15 @@ type Todoitem = {
 }
 
 var ITEMS: Todoitem[] = [
-    {
-    checked: true,
-        key: 'test',
-    },
-    {
-        checked: false,
-        key: 'test2',
-    }
+    // {
+    // checked: true,
+    //     key: 'test',
+    // },
+    // {
+    //     checked: false,
+    //     key: 'test2',
+    // }
 ]
-
 
 export default class Home extends Component<Props, State>{
 
@@ -43,19 +42,17 @@ export default class Home extends Component<Props, State>{
         this.state = {
             data : ITEMS,
             refresh : false,
+            text: '',
 
         };
-        console.log('get data? : ', this.props);
 
     };
 
-    componentDidMount(){
-        console.log('get data? : ', this.props);
+    componentWillReceiveProps() {
+        this.setState({text: this.props.text});
+        this.addNewitem();
     }
 
-    componentWillMount() {
-        console.log('get data? : ', this.props);
-    }
 
 
     dataRefresh = (item, index) => {
@@ -70,11 +67,12 @@ export default class Home extends Component<Props, State>{
 
     addNewitem = () => {
 
-        // let getkey = 'test123';
-        // console.log(getkey);
-        ITEMS.push({checked: false, key: getkey})
+        this.state.text == '' ? null : ITEMS.push({checked: false, key: this.state.text});
+        this.setState({
+            refresh: !this.state.refresh
+        })
         // this.setState({
-        //     refresh: !this.state.refresh
+        //     text: '',
         // })
 
     }
@@ -127,7 +125,6 @@ export default class Home extends Component<Props, State>{
                                 )}
 
                         />
-
 
 
                     </ScrollView>

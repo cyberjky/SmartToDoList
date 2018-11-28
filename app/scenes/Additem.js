@@ -18,7 +18,6 @@ export default class Additem extends Component {
         // })
         //ITEMS.push({checked: false, key: 'testadd'})
         Actions.pop();
-        return ('test')
     }
 
     componentWillUnmount() {

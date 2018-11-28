@@ -68,7 +68,7 @@ export default class Home extends Component{
             <View style={styles.page}>
                 <View style={styles.toplayer}>
                     <Text style={styles.logo}
-                          onPress={Actions.Additem}
+                          onPress={() => Actions.Additem() }
                     >Adds</Text>
                     <Text style={styles.logo}> logo </Text>
                     <Text style={styles.logo}> temp </Text>

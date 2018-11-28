@@ -7,21 +7,21 @@ export default class Additem extends Component {
     constructor(props) {
         super(props);
         console.log(props);
-        this.state = { text: '' };
+        this.state = {
+            text: '',
+        };
+
 
     }
 
-    addNewitem = (props) => {
-        //ITEMS.push({checked: false, key: 'test3'})
-        // this.setState({
-        //     refresh: !this.state.refresh
-        // })
-        //ITEMS.push({checked: false, key: 'testadd'})
+    getitem = (props) => {
+        // console.log(this.state.text);
+        //props.addItem({text: this.state.text});
+        // props.addNewitem({text: this.state.text});
         Actions.pop();
-    }
-
-    componentWillUnmount() {
-        Actions.pop();
+        Actions.refresh({text: this.state.text});
+        //Actions.pop({text:this.state.text});
+        // home에 있는 함수호출
     }
 
 
@@ -39,13 +39,12 @@ export default class Additem extends Component {
                         }}
                         autoFocus = {true}
                         placeholder = 'Do something..'
-
                         onChangeText={(text) => this.setState({text})}
                         value={this.state.text}
                     />
 
                     <Button
-                        onPress={() => this.addNewitem()}
+                        onPress={() => this.getitem() }
                         title="OK"
                         color="#000000"
                         accessibilityLabel="Close"

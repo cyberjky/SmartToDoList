@@ -1,5 +1,15 @@
 import React, {Component} from 'react';
-import {Image, Text, View, StyleSheet, ScrollView, FlatList, TouchableHighlight, } from 'react-native';
+import {
+    Image,
+    Text,
+    View,
+    StyleSheet,
+    ScrollView,
+    FlatList,
+    TouchableHighlight,
+    TextInput,
+    Button,
+} from 'react-native';
 import {ActionConst, Actions, Lightbox, Reducer, Router, Scene} from 'react-native-router-flux';
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 import CheckBox from 'react-native-check-box';
@@ -26,20 +36,25 @@ var ITEMS: Todoitem[] = [
 ]
 
 
-export default class Home extends Component{
+export default class Home extends Component<Props, State>{
 
-    constructor() {
-      super();
+    constructor(props) {
+      super(props);
         this.state = {
             data : ITEMS,
             refresh : false,
 
         };
+        console.log('get data? : ', this.props);
 
     };
 
-    componentWillUnmount() {
-        Actions.pop();
+    componentDidMount(){
+        console.log('get data? : ', this.props);
+    }
+
+    componentWillMount() {
+        console.log('get data? : ', this.props);
     }
 
 
@@ -53,13 +68,16 @@ export default class Home extends Component{
     }
 
 
-    // addNewitem = () => {
-    //     ITEMS.push({checked: false, key: 'test3'})
-    //     this.setState({
-    //         refresh: !this.state.refresh
-    //     })
-    //
-    // }
+    addNewitem = () => {
+
+        // let getkey = 'test123';
+        // console.log(getkey);
+        ITEMS.push({checked: false, key: getkey})
+        // this.setState({
+        //     refresh: !this.state.refresh
+        // })
+
+    }
 
 
     render() {
@@ -68,7 +86,8 @@ export default class Home extends Component{
             <View style={styles.page}>
                 <View style={styles.toplayer}>
                     <Text style={styles.logo}
-                          onPress={() => Actions.Additem() }
+                          onPress={() => Actions.Additem()}
+                          // onPress={() => this.addNewitem()}
                     >Adds</Text>
                     <Text style={styles.logo}> logo </Text>
                     <Text style={styles.logo}> temp </Text>

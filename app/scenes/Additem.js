@@ -1,29 +1,20 @@
 import React, { Component } from 'react';
 import { View, Text, Button, Alert, TextInput } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import TodoModel from "../Models/TodoModel";
 
 export default class Additem extends Component {
 
     constructor(props) {
         super(props);
-        console.log(props);
         this.state = {
             text: '',
         };
-
-
     }
 
-    getitem = (props) => {
-        // console.log(this.state.text);
-        //props.addItem({text: this.state.text});
-        // props.addNewitem({text: this.state.text});
-        Actions.pop();
-        Actions.refresh({text: this.state.text});
-        //Actions.pop({text:this.state.text});
-        // home에 있는 함수호출
-    }
-
+    getitem = () => {
+        Actions.pop({refresh: {newItem: new TodoModel(this.state.text)}});
+    };
 
     render() {
         return (

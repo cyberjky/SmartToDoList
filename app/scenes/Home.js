@@ -16,10 +16,6 @@ import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-vi
 import CheckBox from 'react-native-check-box';
 import {observer} from 'mobx-react/native';
 
-
-@observer
-
-
 type Todoitem = {
   checked : Boolean,
   contents : String,
@@ -37,6 +33,7 @@ var ITEMS: Todoitem[] = [
     // }
 ]
 
+@observer
 export default class Home extends Component<Props, State>{
 
     constructor(props) {

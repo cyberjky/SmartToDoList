@@ -9,13 +9,15 @@ import {
     TouchableHighlight,
     TextInput,
     Button,
+    Navigator,
 } from 'react-native';
 import {ActionConst, Actions, Lightbox, Reducer, Router, Scene} from 'react-native-router-flux';
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 import CheckBox from 'react-native-check-box';
+import {observer} from 'mobx-react/native';
 
 
-
+@observer
 
 
 type Todoitem = {
@@ -77,7 +79,16 @@ export default class Home extends Component<Props, State>{
 
     }
 
+    renderScene(route, navigator){
+        return <route.component {...route.passProps} navigator={navigator} />
+    }
 
+    configureScene(route, routeStack){
+        if(route.type === 'Modal'){
+            return Navigator.SceneConfigs.FloatFromBottom;
+        }
+        return Navigator.SceneConfigs.PushFromRight;
+    }
     render() {
         return (
 

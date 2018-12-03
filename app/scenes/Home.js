@@ -6,15 +6,21 @@ import {
     StyleSheet,
     ScrollView,
     FlatList,
-    TouchableHighlight,
-    TextInput,
-    Button,
-    Navigator,
+    TouchableOpacity,
+    Platform,
 } from 'react-native';
+import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
+import { BlurView } from 'react-native-blur';
 import {ActionConst, Actions, Lightbox, Reducer, Router, Scene} from 'react-native-router-flux';
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 import CheckBox from 'react-native-check-box';
-import {observer} from 'mobx-react/native';
+import {KeyboardAccessoryView, KeyboardUtils} from 'react-native-keyboard-input';
+// import {observer} from 'mobx-react/native';
+
+
+const IsIOS = Platform.OS === 'ios';
+const TrackInteractive = true;
+
 
 type Todoitem = {
   checked : Boolean,
@@ -33,19 +39,109 @@ var ITEMS: Todoitem[] = [
     // }
 ]
 
-@observer
+
+// @observer
 export default class Home extends Component<Props, State>{
 
     constructor(props) {
       super(props);
+        this.keyboardAccessoryViewContent = this.keyboardAccessoryViewContent.bind(this);
+        this.onKeyboardItemSelected = this.onKeyboardItemSelected.bind(this);
+        this.resetKeyboardView = this.resetKeyboardView.bind(this);
+        this.onKeyboardResigned = this.onKeyboardResigned.bind(this);
+
         this.state = {
             data : ITEMS,
             refresh : false,
             text: '',
+            customKeyboard: {
+                component: undefined,
+                initialProps: undefined,
+            },
+            receivedKeyboardData: undefined,
 
         };
 
     };
+
+
+    onKeyboardItemSelected(keyboardId, params) {
+        const receivedKeyboardData = `onItemSelected from "${keyboardId}"\nreceived params: ${JSON.stringify(params)}`;
+        this.setState({receivedKeyboardData});
+    }
+
+    // getToolbarButtons() {
+    //     return [
+    //         {
+    //             text: 'show1',
+    //             testID: 'show1',
+    //             onPress: () => this.showKeyboardView('KeyboardView', 'FIRST - 1 (passed prop)'),
+    //         },
+    //         {
+    //             text: 'show2',
+    //             testID: 'show2',
+    //             onPress: () => this.showKeyboardView('AnotherKeyboardView', 'SECOND - 2 (passed prop)'),
+    //         },
+    //         {
+    //             text: 'reset',
+    //             testID: 'reset',
+    //             onPress: () => this.resetKeyboardView(),
+    //         },
+    //     ];
+    // }
+
+    resetKeyboardView() {
+        this.setState({customKeyboard: {}});
+    }
+
+    onKeyboardResigned() {
+        this.resetKeyboardView();
+    }
+
+    showKeyboardView(component, title) {
+        this.setState({
+            customKeyboard: {
+                component,
+                initialProps: {title},
+            },
+        });
+    }
+
+    keyboardAccessoryViewContent() {
+        const InnerContainerComponent = (IsIOS && BlurView) ? BlurView : View;
+        return (
+            <InnerContainerComponent blurType="xlight" style={styles.blurContainer}>
+                <View style={{borderTopWidth: StyleSheet.hairlineWidth, borderColor: '#bbb'}}/>
+
+                <View style={styles.inputContainer}>
+                    <AutoGrowingTextInput
+                        maxHeight={200}
+                        style={styles.textInput}
+                        ref={(r) => {
+                            this.textInputRef = r;
+                        }}
+                        placeholder={'Message'}
+                        underlineColorAndroid="transparent"
+                        onFocus={() => this.resetKeyboardView()}
+                        testID={'input'}
+                    />
+                    <TouchableOpacity style={styles.sendButton} onPress={() => KeyboardUtils.dismiss()}>
+                        <Text>Action</Text>
+                    </TouchableOpacity>
+                </View>
+
+                    {/*<View style={{flexDirection: 'row'}}>*/}
+                        {/*{*/}
+                        {/*//     this.getToolbarButtons().map((button, index) =>*/}
+                        {/*//         <TouchableOpacity onPress={button.onPress} style={{paddingLeft: 15, paddingBottom: 10}} key={index} testID={button.testID}>*/}
+                        {/*//             <Text>{button.text}</Text>*/}
+                        {/*//         </TouchableOpacity>)*/}
+                        {/*// }*/}
+                    {/*</View>*/}
+            </InnerContainerComponent>
+        );
+    }
+
 
     componentWillReceiveProps() {
         this.setState({text: this.props.text});
@@ -76,23 +172,15 @@ export default class Home extends Component<Props, State>{
 
     }
 
-    renderScene(route, navigator){
-        return <route.component {...route.passProps} navigator={navigator} />
-    }
 
-    configureScene(route, routeStack){
-        if(route.type === 'Modal'){
-            return Navigator.SceneConfigs.FloatFromBottom;
-        }
-        return Navigator.SceneConfigs.PushFromRight;
-    }
     render() {
         return (
 
             <View style={styles.page}>
                 <View style={styles.toplayer}>
                     <Text style={styles.logo}
-                          onPress={() => Actions.Additem()}
+                          onPress={() => KeyboardUtils.dismiss()}
+                          //nPress={() => Actions.Additem()}
                           // onPress={() => this.addNewitem()}
                     >Adds</Text>
                     <Text style={styles.logo}> logo </Text>
@@ -140,7 +228,17 @@ export default class Home extends Component<Props, State>{
                      <Text tabLabel='setting'>project</Text>
                 </ScrollableTabView>
 
-
+                <KeyboardAccessoryView
+                    renderContent={this.keyboardAccessoryViewContent}
+                    onHeightChanged={IsIOS ? height => this.setState({keyboardAccessoryViewHeight: height}) : undefined}
+                    trackInteractive={TrackInteractive}
+                    kbInputRef={this.textInputRef}
+                    kbComponent={this.state.customKeyboard.component}
+                    kbInitialProps={this.state.customKeyboard.initialProps}
+                    onItemSelected={this.onKeyboardItemSelected}
+                    onKeyboardResigned={this.onKeyboardResigned}
+                    revealKeyboardInteractive
+                />
             </View>
 
         );
@@ -183,5 +281,12 @@ let styles = StyleSheet.create({
     logo: {
         fontSize: 20,
         flexDirection: 'row',
+    },
+    blurContainer: {
+        ...Platform.select({
+            ios: {
+                flex: 1,
+            },
+        }),
     },
 });

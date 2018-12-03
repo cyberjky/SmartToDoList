@@ -23,6 +23,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		159BCF170B0C400D87EFA8BD /* libAutoGrowTextInput.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F39FA9ED40C4522A03A9485 /* libAutoGrowTextInput.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -37,6 +38,9 @@
 		2DCD954D1E0B4F2C00145EB5 /* SmartToDoListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SmartToDoListTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		989482980981475993F8E6C3 /* libRNBlur.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE17B4A5A664E15B90308E4 /* libRNBlur.a */; };
+		A85C5CD221B4ECEA00A7A27A /* libRCTCustomInputController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A85C5CD121B4ECCA00A7A27A /* libRCTCustomInputController.a */; };
+		A85C5CD321B4ECF900A7A27A /* libKeyboardTrackingView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A85C5CA621B4ECBB00A7A27A /* libKeyboardTrackingView.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 /* End PBXBuildFile section */
 
@@ -307,6 +311,41 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		A85C5CA521B4ECBB00A7A27A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A85C5CA121B4ECBA00A7A27A /* KeyboardTrackingView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D834CED81CC64F2400FA5668;
+			remoteInfo = KeyboardTrackingView;
+		};
+		A85C5CD021B4ECCA00A7A27A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A85C5CCC21B4ECCA00A7A27A /* RCTCustomInputController.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 39DF4FE71E00394E00F5B4B2;
+			remoteInfo = RCTCustomInputController;
+		};
+		A8C495B321B4F33D0002513C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 647EF0F014DA48F286121B44 /* AutoGrowTextInput.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D81C36501CDB667F00777FB9;
+			remoteInfo = AutoGrowTextInput;
+		};
+		A8C495B921B4F33D0002513C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC81F91F5D634A65B305604E /* RNBlur.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A68BD7BC1BC31318005F02DF;
+			remoteInfo = RNBlur;
+		};
+		A8C495BB21B4F33D0002513C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC81F91F5D634A65B305604E /* RNBlur.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 64D1BD361EEFE88700F3F219;
+			remoteInfo = "RNBlur-tvOS";
+		};
 		ADBDB9261DFEBF0700ED6528 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
@@ -339,10 +378,16 @@
 		2D02E47B1E0B4A5D006451C7 /* SmartToDoList-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SmartToDoList-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* SmartToDoList-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SmartToDoList-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F39FA9ED40C4522A03A9485 /* libAutoGrowTextInput.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libAutoGrowTextInput.a; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
+		5FE17B4A5A664E15B90308E4 /* libRNBlur.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNBlur.a; sourceTree = "<group>"; };
+		647EF0F014DA48F286121B44 /* AutoGrowTextInput.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AutoGrowTextInput.xcodeproj; path = "../node_modules/react-native-autogrow-textinput/ios/AutoGrowTextInput.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		A85C5CA121B4ECBA00A7A27A /* KeyboardTrackingView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KeyboardTrackingView.xcodeproj; path = "../node_modules/react-native-keyboard-tracking-view/lib/KeyboardTrackingView.xcodeproj"; sourceTree = "<group>"; };
+		A85C5CCC21B4ECCA00A7A27A /* RCTCustomInputController.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCustomInputController.xcodeproj; path = "../node_modules/react-native-keyboard-input/lib/ios/RCTCustomInputController.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
+		BC81F91F5D634A65B305604E /* RNBlur.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNBlur.xcodeproj; path = "../node_modules/react-native-blur/ios/RNBlur.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -358,6 +403,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A85C5CD321B4ECF900A7A27A /* libKeyboardTrackingView.a in Frameworks */,
+				A85C5CD221B4ECEA00A7A27A /* libRCTCustomInputController.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -370,6 +417,8 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
+				159BCF170B0C400D87EFA8BD /* libAutoGrowTextInput.a in Frameworks */,
+				989482980981475993F8E6C3 /* libRNBlur.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,6 +593,8 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				A85C5CCC21B4ECCA00A7A27A /* RCTCustomInputController.xcodeproj */,
+				A85C5CA121B4ECBA00A7A27A /* KeyboardTrackingView.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -556,6 +607,8 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
+				647EF0F014DA48F286121B44 /* AutoGrowTextInput.xcodeproj */,
+				BC81F91F5D634A65B305604E /* RNBlur.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -577,6 +630,7 @@
 				00E356EF1AD99517003FC87E /* SmartToDoListTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				A8C4958821B4F33C0002513C /* Recovered References */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -590,6 +644,48 @@
 				00E356EE1AD99517003FC87E /* SmartToDoListTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* SmartToDoList-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* SmartToDoList-tvOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A85C5CA221B4ECBA00A7A27A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A85C5CA621B4ECBB00A7A27A /* libKeyboardTrackingView.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A85C5CCD21B4ECCA00A7A27A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A85C5CD121B4ECCA00A7A27A /* libRCTCustomInputController.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A8C4958821B4F33C0002513C /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				3F39FA9ED40C4522A03A9485 /* libAutoGrowTextInput.a */,
+				5FE17B4A5A664E15B90308E4 /* libRNBlur.a */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		A8C495B021B4F33D0002513C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A8C495B421B4F33D0002513C /* libAutoGrowTextInput.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A8C495B521B4F33D0002513C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A8C495BA21B4F33D0002513C /* libRNBlur.a */,
+				A8C495BC21B4F33D0002513C /* libRNBlur.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -684,7 +780,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 940;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -715,6 +811,14 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = A8C495B021B4F33D0002513C /* Products */;
+					ProjectRef = 647EF0F014DA48F286121B44 /* AutoGrowTextInput.xcodeproj */;
+				},
+				{
+					ProductGroup = A85C5CA221B4ECBA00A7A27A /* Products */;
+					ProjectRef = A85C5CA121B4ECBA00A7A27A /* KeyboardTrackingView.xcodeproj */;
+				},
+				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
 				},
@@ -725,6 +829,10 @@
 				{
 					ProductGroup = ADBDB9201DFEBF0600ED6528 /* Products */;
 					ProjectRef = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
+				},
+				{
+					ProductGroup = A85C5CCD21B4ECCA00A7A27A /* Products */;
+					ProjectRef = A85C5CCC21B4ECCA00A7A27A /* RCTCustomInputController.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302B61ABCB90400DB3ED1 /* Products */;
@@ -761,6 +869,10 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+				},
+				{
+					ProductGroup = A8C495B521B4F33D0002513C /* Products */;
+					ProjectRef = BC81F91F5D634A65B305604E /* RNBlur.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1026,6 +1138,41 @@
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		A85C5CA621B4ECBB00A7A27A /* libKeyboardTrackingView.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libKeyboardTrackingView.a;
+			remoteRef = A85C5CA521B4ECBB00A7A27A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A85C5CD121B4ECCA00A7A27A /* libRCTCustomInputController.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTCustomInputController.a;
+			remoteRef = A85C5CD021B4ECCA00A7A27A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A8C495B421B4F33D0002513C /* libAutoGrowTextInput.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAutoGrowTextInput.a;
+			remoteRef = A8C495B321B4F33D0002513C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A8C495BA21B4F33D0002513C /* libRNBlur.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNBlur.a;
+			remoteRef = A8C495B921B4F33D0002513C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A8C495BC21B4F33D0002513C /* libRNBlur.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNBlur.a;
+			remoteRef = A8C495BB21B4F33D0002513C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1171,9 +1318,19 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-autogrow-textinput/ios",
+					"$(SRCROOT)/../node_modules/react-native-blur/ios",
+				);
 				INFOPLIST_FILE = SmartToDoListTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1189,9 +1346,19 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-autogrow-textinput/ios",
+					"$(SRCROOT)/../node_modules/react-native-blur/ios",
+				);
 				INFOPLIST_FILE = SmartToDoListTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1208,6 +1375,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-autogrow-textinput/ios",
+					"$(SRCROOT)/../node_modules/react-native-blur/ios",
+				);
 				INFOPLIST_FILE = SmartToDoList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -1226,6 +1398,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-autogrow-textinput/ios",
+					"$(SRCROOT)/../node_modules/react-native-blur/ios",
+				);
 				INFOPLIST_FILE = SmartToDoList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -1251,8 +1428,18 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-autogrow-textinput/ios",
+					"$(SRCROOT)/../node_modules/react-native-blur/ios",
+				);
 				INFOPLIST_FILE = "SmartToDoList-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1277,8 +1464,18 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-autogrow-textinput/ios",
+					"$(SRCROOT)/../node_modules/react-native-blur/ios",
+				);
 				INFOPLIST_FILE = "SmartToDoList-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1302,8 +1499,18 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-autogrow-textinput/ios",
+					"$(SRCROOT)/../node_modules/react-native-blur/ios",
+				);
 				INFOPLIST_FILE = "SmartToDoList-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1327,8 +1534,18 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-autogrow-textinput/ios",
+					"$(SRCROOT)/../node_modules/react-native-blur/ios",
+				);
 				INFOPLIST_FILE = "SmartToDoList-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",

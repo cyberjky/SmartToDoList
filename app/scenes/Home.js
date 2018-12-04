@@ -7,6 +7,7 @@ import {
     ScrollView,
     FlatList,
     TouchableOpacity,
+    PixelRatio,
     Platform,
 } from 'react-native';
 import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
@@ -29,14 +30,14 @@ type Todoitem = {
 }
 
 var ITEMS: Todoitem[] = [
-    // {
-    // checked: true,
-    //     key: 'test',
-    // },
-    // {
-    //     checked: false,
-    //     key: 'test2',
-    // }
+    {
+    checked: false,
+        key: 'test123',
+    },
+    {
+        checked: false,
+        key: 'test2123',
+    }
 ]
 
 
@@ -119,14 +120,15 @@ export default class Home extends Component<Props, State>{
                         style={styles.textInput}
                         ref={(r) => {
                             this.textInputRef = r;
+
                         }}
                         placeholder={'Message'}
                         underlineColorAndroid="transparent"
                         onFocus={() => this.resetKeyboardView()}
-                        testID={'input'}
+                        //testID={'input'}
                     />
                     <TouchableOpacity style={styles.sendButton} onPress={() => KeyboardUtils.dismiss()}>
-                        <Text>Action</Text>
+                        <Text>Add</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -177,32 +179,24 @@ export default class Home extends Component<Props, State>{
         return (
 
             <View style={styles.page}>
+
                 <View style={styles.toplayer}>
                     <Text style={styles.logo}
-                          onPress={() => KeyboardUtils.dismiss()}
-                          //nPress={() => Actions.Additem()}
-                          // onPress={() => this.addNewitem()}
-                    >Adds</Text>
+                    >Temp</Text>
                     <Text style={styles.logo}> logo </Text>
                     <Text style={styles.logo}> temp </Text>
-
                 </View>
 
-
                 <ScrollableTabView
+                    style={{marginBottom: 50, }}
                     initialPage={1}
                     renderTabBar={() => <DefaultTabBar />}
                     tabBarPosition={"bottom"}
                 >
 
-
-
                     <Text tabLabel='Menu'>My</Text>
 
-
                     <ScrollView tabLabel='Main' style={styles.mainlayer}>
-
-
                         <FlatList
                             data={this.state.data}
                             extraData={this.state.refresh}
@@ -219,13 +213,12 @@ export default class Home extends Component<Props, State>{
                                   rightText={item.key}
                               />
                                 )}
-
                         />
-
 
                     </ScrollView>
 
-                     <Text tabLabel='setting'>project</Text>
+                    <Text tabLabel='setting'>project</Text>
+
                 </ScrollableTabView>
 
                 <KeyboardAccessoryView
@@ -240,6 +233,7 @@ export default class Home extends Component<Props, State>{
                     revealKeyboardInteractive
                 />
             </View>
+
 
         );
     }
@@ -288,5 +282,29 @@ let styles = StyleSheet.create({
                 flex: 1,
             },
         }),
+    },
+    inputContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        // marginBottom: 25,
+    },
+    textInput: {
+        flex: 1,
+        marginLeft: 10,
+        marginTop: 10,
+        marginBottom: 10,
+        paddingLeft: 10,
+        paddingTop: 2,
+        paddingBottom: 5,
+        fontSize: 16,
+        backgroundColor: 'white',
+        borderWidth: 0.5 / PixelRatio.get(),
+        borderRadius: 18,
+    },
+    sendButton: {
+        paddingRight: 15,
+        paddingLeft: 15,
+        alignSelf: 'center',
     },
 });

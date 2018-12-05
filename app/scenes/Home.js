@@ -105,6 +105,7 @@ export default class Home extends Component<Props, State>{
                         () => {
                             KeyboardUtils.dismiss();
                             this.addNewitem();
+                            this.textInputRef.clear();
                         }
                     }
                     >

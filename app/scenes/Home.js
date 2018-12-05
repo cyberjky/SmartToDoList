@@ -16,7 +16,7 @@ import {ActionConst, Actions, Lightbox, Reducer, Router, Scene} from 'react-nati
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 import CheckBox from 'react-native-check-box';
 import {KeyboardAccessoryView, KeyboardUtils} from 'react-native-keyboard-input';
-// import {observer} from 'mobx-react/native';
+import '../component/demoKeyboards';
 
 
 const IsIOS = Platform.OS === 'ios';
@@ -41,7 +41,7 @@ var ITEMS: Todoitem[] = [
 ]
 
 
-// @observer
+
 export default class Home extends Component<Props, State>{
 
     constructor(props) {
@@ -71,25 +71,6 @@ export default class Home extends Component<Props, State>{
         this.setState({receivedKeyboardData});
     }
 
-    // getToolbarButtons() {
-    //     return [
-    //         {
-    //             text: 'show1',
-    //             testID: 'show1',
-    //             onPress: () => this.showKeyboardView('KeyboardView', 'FIRST - 1 (passed prop)'),
-    //         },
-    //         {
-    //             text: 'show2',
-    //             testID: 'show2',
-    //             onPress: () => this.showKeyboardView('AnotherKeyboardView', 'SECOND - 2 (passed prop)'),
-    //         },
-    //         {
-    //             text: 'reset',
-    //             testID: 'reset',
-    //             onPress: () => this.resetKeyboardView(),
-    //         },
-    //     ];
-    // }
 
     resetKeyboardView() {
         this.setState({customKeyboard: {}});
@@ -99,14 +80,6 @@ export default class Home extends Component<Props, State>{
         this.resetKeyboardView();
     }
 
-    showKeyboardView(component, title) {
-        this.setState({
-            customKeyboard: {
-                component,
-                initialProps: {title},
-            },
-        });
-    }
 
     keyboardAccessoryViewContent() {
         const InnerContainerComponent = (IsIOS && BlurView) ? BlurView : View;
@@ -122,34 +95,26 @@ export default class Home extends Component<Props, State>{
                             this.textInputRef = r;
 
                         }}
-                        placeholder={'Message'}
+                        onChangeText={(text) => this.setState({text})}
+                        placeholder={'Write To Do item'}
                         underlineColorAndroid="transparent"
                         onFocus={() => this.resetKeyboardView()}
-                        //testID={'input'}
+                        testID={'input'}
                     />
-                    <TouchableOpacity style={styles.sendButton} onPress={() => KeyboardUtils.dismiss()}>
+                    <TouchableOpacity style={styles.sendButton} onPress={
+                        () => {
+                            KeyboardUtils.dismiss();
+                            this.addNewitem();
+                        }
+                    }
+                    >
                         <Text>Add</Text>
                     </TouchableOpacity>
                 </View>
 
-                    {/*<View style={{flexDirection: 'row'}}>*/}
-                        {/*{*/}
-                        {/*//     this.getToolbarButtons().map((button, index) =>*/}
-                        {/*//         <TouchableOpacity onPress={button.onPress} style={{paddingLeft: 15, paddingBottom: 10}} key={index} testID={button.testID}>*/}
-                        {/*//             <Text>{button.text}</Text>*/}
-                        {/*//         </TouchableOpacity>)*/}
-                        {/*// }*/}
-                    {/*</View>*/}
             </InnerContainerComponent>
         );
     }
-
-
-    componentWillReceiveProps() {
-        this.setState({text: this.props.text});
-        this.addNewitem();
-    }
-
 
 
     dataRefresh = (item, index) => {
@@ -164,6 +129,7 @@ export default class Home extends Component<Props, State>{
 
     addNewitem = () => {
 
+        // console.log(this.textInputRef);
         this.state.text == '' ? null : ITEMS.push({checked: false, key: this.state.text});
         this.setState({
             refresh: !this.state.refresh
@@ -196,7 +162,9 @@ export default class Home extends Component<Props, State>{
 
                     <Text tabLabel='Menu'>My</Text>
 
-                    <ScrollView tabLabel='Main' style={styles.mainlayer}>
+                    <ScrollView tabLabel='Main' style={styles.mainlayer}
+                                keyboardDismissMode={TrackInteractive ? 'interactive' : 'none'}
+                    >
                         <FlatList
                             data={this.state.data}
                             extraData={this.state.refresh}

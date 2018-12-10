@@ -9,6 +9,7 @@ import {
     TouchableOpacity,
     PixelRatio,
     Platform,
+    AsyncStorage,
 } from 'react-native';
 import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
 import { BlurView } from 'react-native-blur';
@@ -30,16 +31,40 @@ type Todoitem = {
 }
 
 var ITEMS: Todoitem[] = [
-    {
-    checked: false,
-        key: 'test123',
-    },
-    {
-        checked: false,
-        key: 'test2123',
-    }
+    // {
+    // checked: false,
+    //     key: 'ab123',
+    // },
+    // {
+    //     checked: false,
+    //     key: 'ab1234',
+    // }
 ]
 
+_storeData = async () => {
+    try {
+        await AsyncStorage.setItem('@MySuperStore:key', 'I like to save it.');
+    } catch (error) {
+        // Error saving data
+    }
+}
+
+_retrieveData = async () => {
+    try {
+        const value = await AsyncStorage.getItem('ITEMS');
+        let newvalue = JSON.parse(value);
+        console.log(newvalue);
+        console.log(typeof(newvalue));
+
+        if ( !newvalue) {
+            newvalue = [];
+            // We have data!!
+            console.log(value);
+        }
+    } catch (error) {
+        // Error retrieving data
+    }
+}
 
 
 export default class Home extends Component<Props, State>{
@@ -62,6 +87,11 @@ export default class Home extends Component<Props, State>{
             receivedKeyboardData: undefined,
 
         };
+
+        AsyncStorage.getItem('ITEMS', (err, result) => {
+            ITEMS = JSON.parse(result);
+            this.setState({data: ITEMS});
+        });
 
     };
 
@@ -129,16 +159,13 @@ export default class Home extends Component<Props, State>{
 
 
     addNewitem = () => {
-
-        // console.log(this.textInputRef);
         this.state.text == '' ? null : ITEMS.push({checked: false, key: this.state.text});
+        AsyncStorage.setItem('ITEMS', JSON.stringify(ITEMS), (err, result) => {
+        });
+
         this.setState({
             refresh: !this.state.refresh
         })
-        // this.setState({
-        //     text: '',
-        // })
-
     }
 
 
